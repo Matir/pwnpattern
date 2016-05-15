@@ -59,7 +59,7 @@ def interpret_target(target):
             return struct.pack(fmt, val)
         except ValueError:
             pass
-    if len(val) in (8, 16):
+    if len(target) in (8, 16):
         # These lengths are commonly hex
         try:
             val = int(target, 16)
@@ -103,7 +103,7 @@ def main(argv):
         target = args[0]
         length = int(args[1]) if len(args) > 1 else _default_length
         sets = args[2:] if len(args) > 3 else None
-        sys.stdout.write('[*] Match at offset {}'.format(
+        sys.stdout.write('[*] Match at offset {}\n'.format(
             pattern_offset(target, length, sets)))
         return
     usage()
